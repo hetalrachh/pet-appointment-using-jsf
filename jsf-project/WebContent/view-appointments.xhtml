@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Submitted appointment</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+	<!-- jQuery library -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form>
+			<nav class="navbar navbar-light bg-dark"> <span
+				class="navbar-brand mb-0 h1 text-white">Your appointments till date</span> </nav>
+			<br />
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th valign="middle" scope="col">Name</th>
+						<th valign="middle" scope="col">Contact no</th>
+						<th valign="middle" scope="col">Email address</th>
+						<th valign="middle" scope="col">Pet name</th>
+						<th valign="middle" scope="col">Pet dob</th>
+						<th valign="middle" scope="col">Pet species</th>
+						<th valign="middle" scope="col">Per breed</th>
+						<th valign="middle" scope="col">Treated for illness in past one year</th>
+						<th valign="middle" scope="col">Problem(s)/Medications</th>
+						
+					</tr>
+				 <ui:repeat value="#{jdbcDetails.allListDetails}" var="detail">
+					<tr>
+					  <td>#{detail.name}</td>
+					  <td>#{detail.contactNo}</td>
+					  <td>#{detail.emailAddress}</td>
+					  <td>#{detail.petName}</td>
+					  <td>#{detail.dob}</td>
+					  <td>#{detail.species}</td>
+					  <td>#{detail.breed}</td>
+					  <td>#{detail.treatedForIllness}</td>
+					  <td>#{detail.problem}</td>
+					 
+					</tr>
+					</ui:repeat> 
+					
+				</thead>
+			</table>
+			<h:commandButton type="submit" value="Back"
+					class="btn btn-secondary" action="view-submitted-appointment"></h:commandButton>
+		</h:form>
+	</div>
+</h:body>
+</html>

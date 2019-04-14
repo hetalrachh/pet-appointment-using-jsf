@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;"> 
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" lang="en">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Appointment form</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+	<!-- jQuery library -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form>
+			<fieldset>
+				<nav class="navbar navbar-light bg-dark">
+					<span class="navbar-brand mb-0 h1 text-white">Register
+						appointment for your pet</span>
+				</nav>
+				<br />
+				<nav class="navbar navbar-light bg-light col-5 py-0">
+					<span class="navbar-brand mb-0 h3">Owner information</span>
+				</nav>
+				<br />
+				<div class="form-group col-5">
+					<h:outputLabel for="name" value="Full name: "></h:outputLabel>
+					<h:inputText id="name" value="#{userDetails.name}"
+						class="form-control" required="true"
+						requiredMessage="Please enter your full name"></h:inputText>
+					<h:message for="name" style="color:red" />
+
+				</div>
+
+
+				<div class="form-group col-5">
+					<h:outputLabel for="address" value="Home address: "></h:outputLabel>
+					<h:inputTextarea id="address" value="#{userDetails.address}"
+						class="form-control" required="true"
+						requiredMessage="Please enter your home address"></h:inputTextarea>
+					<h:message for="address" style="color:red" />
+				</div>
+				<div class="form-group col-5">
+					<h:outputLabel for="contact" value="Contact no: "></h:outputLabel>
+					<h:inputText id="contact" value="#{userDetails.contactNo}"
+						class="form-control" required="true"
+						requiredMessage="Please enter your contact no"></h:inputText>
+					<small id="contactHelp" class="form-text text-muted">We'll
+						never share your contact no with anyone else.</small>
+					<h:message for="contact" style="color:red" />
+				</div>
+				<div class="form-group col-5">
+					<h:outputLabel for="email" value="Email address: "></h:outputLabel>
+					<h:inputText id="email" value="#{userDetails.emailAddress}"
+						class="form-control" required="true"
+						requiredMessage="Please enter your email address"></h:inputText>
+					<h:message for="email" style="color:red" />
+
+				</div>
+				<br />
+				<nav class="navbar navbar-light bg-light col-5 py-0">
+					<span class="navbar-brand mb-0 h3">Pet information</span>
+				</nav>
+				<br />
+				<div class="form-group col-5">
+					<h:outputLabel for="petname" value="Pet's name : "></h:outputLabel>
+					<h:inputText id="petname" value="#{petDetails.petName}"
+						class="form-control" required="true"
+						requiredMessage="Please enter your pet's name"></h:inputText>
+					<h:message for="petname" style="color:red" />
+
+				</div>
+				<div class="form-group col-5">
+					<h:outputLabel for="name" value="Pet's date of birth(if known) : "></h:outputLabel>
+					<h:inputText id="petdob" value="#{petDetails.dob}"
+						class="form-control"></h:inputText>
+
+				</div>
+				<div class="form-group col-5">
+					<h:outputLabel for="species" value="Species : "></h:outputLabel>
+
+					<h:selectOneMenu value="#{petDetails.species}" id="species"
+						class="form-control" required="true"
+						requiredMessage="Please select the species">
+						<f:selectItem itemLabel="Please select" itemValue="#{null}"></f:selectItem>
+						<f:selectItem itemLabel="Canine" itemValue="canine"></f:selectItem>
+						<f:selectItem itemLabel="Feline" itemValue="feline"></f:selectItem>
+						<f:selectItem itemLabel="Other" itemValue="other"></f:selectItem>
+
+					</h:selectOneMenu>
+					<h:message for="species" style="color:red" />
+				</div>
+				<div class="form-group col-5">
+					<h:outputLabel for="name" value="Breed : "></h:outputLabel>
+					<h:inputText id="petbreed" value="#{petDetails.breed}"
+						class="form-control"></h:inputText>
+
+				</div>
+				<div class="form-group col-5">
+					<h:outputLabel class="radio-inline" for="treatedForIllness"
+						value="Has your pet been treated for illness in the past year? "></h:outputLabel>
+					<h:selectOneRadio value="#{petDetails.treatedForIllness}"
+						id="treatedForIllness" required="true"
+						requiredMessage="Please select whether your pet is treated for illness in the past year">
+						<f:selectItem itemLabel="Yes &nbsp; &nbsp;" itemValue="Y"></f:selectItem>
+						<f:selectItem itemLabel="No" itemValue="N"></f:selectItem>
+					</h:selectOneRadio>
+					<h:message for="treatedForIllness" style="color:red" />
+				</div>
+				<div class="form-group col-5">
+					<h:outputLabel for="reasonForAppointment"
+						value="Specify problem(s), medications and dosages : "></h:outputLabel>
+					<h:inputTextarea id="reasonForAppointment"
+						value="#{petDetails.problem}" class="form-control" required="true"
+						requiredMessage="Please specify problems, medications and dosages"></h:inputTextarea>
+					<h:message for="reasonForAppointment" style="color:red" />
+				</div>
+				<div class="form-group col-5">
+					<h:commandButton value="Submit appointment"
+						class="btn btn-secondary" style="margin-right:16px" action="#{jdbcDetails.addDetails}" type="submit"></h:commandButton>
+					
+				</div>
+			</fieldset>
+
+		</h:form>
+	</div>
+</h:body>
+</html>

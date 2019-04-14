@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" lang="en">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Submitted appointment</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+	<!-- jQuery library -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+.table th {
+	width: 25%
+}
+</style>
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form>
+			<nav class="navbar navbar-light bg-dark"> <span
+				class="navbar-brand mb-0 h1 text-white">Your submitted
+				appointment details</span> </nav>
+			<br />
+			<span class="mb-0 h5">Owner details</span>
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th scope="row">Name</th>
+						<td>#{userDetails.name}</td>
+					</tr>
+					<tr>
+						<th scope="row">Address</th>
+						<td>#{userDetails.address}</td>
+					</tr>
+					<tr>
+						<th scope="row">Contact no</th>
+						<td>#{userDetails.contactNo}</td>
+					</tr>
+					<tr>
+						<th scope="row">Email address</th>
+						<td>#{userDetails.emailAddress}</td>
+					</tr>
+				</thead>
+			</table>
+			<span class="mb-0 h5">Pet details</span>
+			<table class="table">
+				<thead class="thead-light">
+					<tr>
+						<th scope="row">Name</th>
+						<td>#{petDetails.petName}</td>
+					</tr>
+					<tr>
+						<th scope="row">DOB</th>
+						<td>#{petDetails.dob}</td>
+					</tr>
+					<tr>
+						<th scope="row">Species</th>
+						<td>#{petDetails.species}</td>
+					</tr>
+					<tr>
+						<th scope="row">Breed</th>
+						<td>#{petDetails.breed}</td>
+					</tr>
+					<tr>
+						<th scope="row">Treated For Illness</th>
+						<td>#{petDetails.treatedForIllness}</td>
+					</tr>
+					<tr>
+						<th scope="row">Problem(s)/medications/dosages</th>
+						<td>#{petDetails.problem}</td>
+					</tr>
+				</thead>
+			</table>
+			<div class="form-group col-5">
+				<h:commandButton type="submit" value="Back"
+					class="btn btn-secondary" action="index" style="margin-right:16px"></h:commandButton>
+				<h:commandButton value="View appointments"
+						class="btn btn-secondary" action="#{jdbcDetails.getDetails(userDetails.name)}"
+						immediate="true"></h:commandButton>
+
+			</div>
+		</h:form>
+	</div>
+</h:body>
+</html>
